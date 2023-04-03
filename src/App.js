@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import FuncProps from './Components/Props/FuncProps';
+import ClassProps from './Components/Props/ClassProps';
+import ProfileClass from './Components/Example/ProfileClass';
 
 function App() {
+
+  function parentFunc(child){
+    alert(child)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <FuncProps name="Bala" work="Driver" func1={parentFunc}/>
+      <ClassProps name="Krish" work="Teacher" func1={parentFunc}/> */}
+
+      <ProfileClass />
+
     </div>
   );
 }
