@@ -12,10 +12,10 @@ function App() {
 
   return (
     <div className="App">
-      {/* <FuncProps name="Bala" work="Driver" func1={parentFunc}/>
-      <ClassProps name="Krish" work="Teacher" func1={parentFunc}/> */}
+      <FuncProps name="Bala" work="Driver" func1={parentFunc}/>
+      <ClassProps name="Krish" work="Teacher" func1={parentFunc}/>
 
-      <ProfileClass />
+      {/* <ProfileClass /> */}
 
     </div>
   );
