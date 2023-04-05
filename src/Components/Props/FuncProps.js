@@ -7,12 +7,10 @@ function FuncProps(props) {
   const [input_name, setInputName] = useState('') 
 
   const changeListener = (event) => {
-    console.log(event)
     setInputName(event.target.value)
   }
 
   const changeName = (input_name) => {
-    console.log(input_name)
     setName(input_name)
   }
 
