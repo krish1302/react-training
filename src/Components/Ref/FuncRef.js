@@ -8,14 +8,15 @@ const FuncRef = forwardRef((props, ref) => {
         console.log(inputRef.current.value)
     }
 
-    const childFunc = () => {
-        console.log('This is funcref component')
-    }
+    
 
     useImperativeHandle = (ref, () => ({
         childFunc,
     }))
 
+    const childFunc = () => {
+        console.log('This is funcref component')
+    }
     
 
   return (

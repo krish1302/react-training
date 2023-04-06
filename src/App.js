@@ -6,6 +6,8 @@ import ProfileClass from './Components/Example/ProfileClass';
 import ClassRef from './Components/Ref/ClassRef';
 import FuncRef from './Components/Ref/FuncRef';
 import { useRef } from 'react'
+import Func2Ref from './Components/Ref/Func2Ref';
+import ClassCLifecycle from './Components/Lifecycle/ClassCLifecycle';
 
 function App() {
 
@@ -24,10 +26,12 @@ function App() {
       {/* <ProfileClass /> */}
 
       <ClassRef ref={child1} name="Bala"/>
-      <FuncRef ref={child2} name="krish"/>
+      <Func2Ref ref={child2} name="Raj"/>
 
       <button onClick={() => child1.current.childFunc()}>child1</button>
-      <button onClick={() => child2.current.childFunc()}>child2</button>
+      <button onClick={() => child2.current.child2Func()}>Func2 Child</button>
+
+      <ClassCLifecycle />
     </div>
   );
 }
