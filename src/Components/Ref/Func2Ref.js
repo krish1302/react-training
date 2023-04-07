@@ -4,6 +4,7 @@ const Func2Ref = (props, ref) =>{
 
   useImperativeHandle(ref, () => ({
     child2Func,
+    
   }), [])
 
   const child2Func = () => {

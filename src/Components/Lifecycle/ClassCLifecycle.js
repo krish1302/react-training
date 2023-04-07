@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
 class ClassCLifecycle extends Component {
-    constructor(){
+    constructor(props){
+        super(props)
         console.log('Class create Lifecycle constructor')
     }
 
-    getDerivedStateFromProps(props, state){
+    static getDerivedStateFromProps(props, state){
         console.log('Class create Lifecycle getDerivedStateFromProps')
     }
 

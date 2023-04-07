@@ -5,14 +5,16 @@ import ClassProps from './Components/Props/ClassProps';
 import ProfileClass from './Components/Example/ProfileClass';
 import ClassRef from './Components/Ref/ClassRef';
 import FuncRef from './Components/Ref/FuncRef';
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Func2Ref from './Components/Ref/Func2Ref';
 import ClassCLifecycle from './Components/Lifecycle/ClassCLifecycle';
+import ClassMountingLifeCycle from './Components/Lifecycle/ClassMountingLifeCycle';
 
 function App() {
 
   const child1 = useRef()
   const child2 = useRef()
+  const [mount, setMount] = useState(false)
 
   function parentFunc(child){
     alert(child)
@@ -31,7 +33,14 @@ function App() {
       <button onClick={() => child1.current.childFunc()}>child1</button>
       <button onClick={() => child2.current.child2Func()}>Func2 Child</button>
 
-      <ClassCLifecycle />
+
+      <button onClick={()=> setMount(true)}>Mount</button>
+      <button onClick={()=> setMount(false)}>UnMount</button>
+      {
+        mount && <ClassMountingLifeCycle first="bala"/>
+      }
+
+
     </div>
   );
 }
