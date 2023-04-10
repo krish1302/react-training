@@ -9,6 +9,10 @@ import { useRef, useState } from 'react'
 import Func2Ref from './Components/Ref/Func2Ref';
 import ClassCLifecycle from './Components/Lifecycle/ClassCLifecycle';
 import ClassMountingLifeCycle from './Components/Lifecycle/ClassMountingLifeCycle';
+import FuncLifecycle from './Components/Lifecycle/FuncLifecycle';
+import ParentComponent from './Components/ContextClassComponet/ParentComponent';
+import {NameContext, WorkContext} from './Components/Context/Context';
+import ParentFuncContext from './Components/ContextFuncComponent/ParentFuncContext';
 
 function App() {
 
@@ -27,7 +31,7 @@ function App() {
 
       {/* <ProfileClass /> */}
 
-      <ClassRef ref={child1} name="Bala"/>
+      {/* <ClassRef ref={child1} name="Bala"/>
       <Func2Ref ref={child2} name="Raj"/>
 
       <button onClick={() => child1.current.childFunc()}>child1</button>
@@ -38,9 +42,18 @@ function App() {
       <button onClick={()=> setMount(false)}>UnMount</button>
       {
         mount && <ClassMountingLifeCycle first="bala"/>
-      }
+      } */}
 
 
+      {/* <FuncLifecycle /> */}
+      <NameContext.Provider value='krish'>
+        <WorkContext.Provider value='student'>
+          <ParentComponent />
+          <ParentFuncContext />
+        </WorkContext.Provider>
+      </NameContext.Provider>
+
+     
     </div>
   );
 }
