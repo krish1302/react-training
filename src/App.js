@@ -13,12 +13,15 @@ import FuncLifecycle from './Components/Lifecycle/FuncLifecycle';
 import ParentComponent from './Components/ContextClassComponet/ParentComponent';
 import {NameContext, WorkContext} from './Components/Context/Context';
 import ParentFuncContext from './Components/ContextFuncComponent/ParentFuncContext';
+import Page1 from './App-components/Page1/Page1';
+import Page2 from './App-components/Page2/Page2';
 
 function App() {
 
   const child1 = useRef()
   const child2 = useRef()
   const [mount, setMount] = useState(false)
+  const [page, setPage] = useState('page1')
 
   function parentFunc(child){
     alert(child)
@@ -46,14 +49,19 @@ function App() {
 
 
       {/* <FuncLifecycle /> */}
-      <NameContext.Provider value='krish'>
+      {/* <NameContext.Provider value='krish'>
         <WorkContext.Provider value='student'>
           <ParentComponent />
           <ParentFuncContext />
         </WorkContext.Provider>
-      </NameContext.Provider>
+      </NameContext.Provider> */}
+{/* 
+      <button onClick={()=> setPage('page1')}>page1</button>
+      <button onClick={()=> setPage('page2')}>page2</button> */}
 
-     
+      {page === 'page1' && <Page1 setPage={setPage}/>}
+      {page === 'page2' && <Page2 setPage={setPage}/>}
+
     </div>
   );
 }
