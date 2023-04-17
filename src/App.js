@@ -15,6 +15,9 @@ import {NameContext, WorkContext} from './Components/Context/Context';
 import ParentFuncContext from './Components/ContextFuncComponent/ParentFuncContext';
 import Page1 from './App-components/Page1/Page1';
 import Page2 from './App-components/Page2/Page2';
+import { Route, Routes, Link } from 'react-router-dom';
+import RoutePage1 from './Router-Components/RoutePage1';
+import RoutePage2 from './Router-Components/RoutePage2';
 
 function App() {
 
@@ -59,8 +62,17 @@ function App() {
       <button onClick={()=> setPage('page1')}>page1</button>
       <button onClick={()=> setPage('page2')}>page2</button> */}
 
-      {page === 'page1' && <Page1 setPage={setPage}/>}
-      {page === 'page2' && <Page2 setPage={setPage}/>}
+      {/* {page === 'page1' && <Page1 setPage={setPage}/>}
+      {page === 'page2' && <Page2 setPage={setPage}/>} */}
+
+      <Link to="page1">Page1</Link>
+      <Link to="page2">Page2</Link>
+
+      <Routes>
+        <Route index element={<RoutePage1/>} ></Route>
+        <Route path="page1" element={<RoutePage1/>} ></Route>
+        <Route path="page2" element={<RoutePage2/>} ></Route>
+      </Routes>
 
     </div>
   );
