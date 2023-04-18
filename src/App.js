@@ -15,9 +15,12 @@ import {NameContext, WorkContext} from './Components/Context/Context';
 import ParentFuncContext from './Components/ContextFuncComponent/ParentFuncContext';
 import Page1 from './App-components/Page1/Page1';
 import Page2 from './App-components/Page2/Page2';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, useNavigate, NavLink } from 'react-router-dom';
 import RoutePage1 from './Router-Components/RoutePage1';
 import RoutePage2 from './Router-Components/RoutePage2';
+import SubRouter1 from './Router-Components/sub-routers/SubRouter1';
+import SubRouter2 from './Router-Components/sub-routers/SubRouter2';
+
 
 function App() {
 
@@ -25,9 +28,14 @@ function App() {
   const child2 = useRef()
   const [mount, setMount] = useState(false)
   const [page, setPage] = useState('page1')
+  const navigate = useNavigate()
 
   function parentFunc(child){
     alert(child)
+  }
+
+  function navigation(route){
+    navigate(route)
   }
 
   return (
@@ -64,15 +72,22 @@ function App() {
 
       {/* {page === 'page1' && <Page1 setPage={setPage}/>}
       {page === 'page2' && <Page2 setPage={setPage}/>} */}
-
-      <Link to="page1">Page1</Link>
-      <Link to="page2">Page2</Link>
-
+      <nav>
+        <NavLink to="page1">Page1</NavLink>
+        <NavLink to="page2">Page2</NavLink>
+      </nav>
+     
       <Routes>
-        <Route index element={<RoutePage1/>} ></Route>
-        <Route path="page1" element={<RoutePage1/>} ></Route>
+        <Route path='/' element={<RoutePage1 navigation={navigation}/>} ></Route>
+        <Route path="page1" element={<RoutePage1 />} >
+            <Route index element={<SubRouter1/>}></Route>
+            <Route path='sub1' element={<SubRouter1/>} />
+            <Route path='sub2' element={<SubRouter2/>} />
+        </Route>
         <Route path="page2" element={<RoutePage2/>} ></Route>
       </Routes>
+
+      <button onClick={()=> navigate('/page2')}>go to page 2</button>
 
     </div>
   );
