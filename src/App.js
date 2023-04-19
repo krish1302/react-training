@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
 import FuncProps from './Components/Props/FuncProps';
 import ClassProps from './Components/Props/ClassProps';
@@ -17,9 +18,14 @@ import Page1 from './App-components/Page1/Page1';
 import Page2 from './App-components/Page2/Page2';
 import { Route, Routes, Link, useNavigate, NavLink } from 'react-router-dom';
 import RoutePage1 from './Router-Components/RoutePage1';
-import RoutePage2 from './Router-Components/RoutePage2';
+// import RoutePage2 from './Router-Components/RoutePage2';
 import SubRouter1 from './Router-Components/sub-routers/SubRouter1';
 import SubRouter2 from './Router-Components/sub-routers/SubRouter2';
+import ErrorPage from './Router-Components/ErrorPage';
+import Login from './Router-Components/Login';
+import Home from './Router-Components/Home';
+const RoutePage2 = React.lazy(() => import("./Router-Components/RoutePage2"))
+
 
 
 function App() {
@@ -75,6 +81,7 @@ function App() {
       <nav>
         <NavLink to="page1">Page1</NavLink>
         <NavLink to="page2">Page2</NavLink>
+        <NavLink to="login">Login</NavLink>
       </nav>
      
       <Routes>
@@ -84,10 +91,17 @@ function App() {
             <Route path='sub1' element={<SubRouter1/>} />
             <Route path='sub2' element={<SubRouter2/>} />
         </Route>
-        <Route path="page2" element={<RoutePage2/>} ></Route>
+        <Route path="page2" element={
+          <React.Suspense fallback={<>...</>}>
+            <RoutePage2 />
+          </React.Suspense>
+        } ></Route>
+        <Route path='login' element={<Login/>}></Route>
+        <Route path='user/:userName' element={<Home />}></Route>
+        <Route path="*" element={<ErrorPage/>}></Route>
       </Routes>
 
-      <button onClick={()=> navigate('/page2')}>go to page 2</button>
+      {/* <button onClick={()=> navigate('/page2')}>go to page 2</button> */}
 
     </div>
   );
