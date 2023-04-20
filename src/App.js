@@ -24,7 +24,10 @@ import SubRouter2 from './Router-Components/sub-routers/SubRouter2';
 import ErrorPage from './Router-Components/ErrorPage';
 import Login from './Router-Components/Login';
 import Home from './Router-Components/Home';
+import WelcomeFunc from './Router-Components/WelcomeFunc';
+import LoginFunc from './Router-Components/LoginFunc';
 const RoutePage2 = React.lazy(() => import("./Router-Components/RoutePage2"))
+
 
 
 
@@ -96,8 +99,8 @@ function App() {
             <RoutePage2 />
           </React.Suspense>
         } ></Route>
-        <Route path='login' element={<Login/>}></Route>
-        <Route path='user/:userName' element={<Home />}></Route>
+        <Route path='login' element={<LoginFunc />}></Route>
+        <Route path='user/:userName' element={<WelcomeFunc />}></Route>
         <Route path="*" element={<ErrorPage/>}></Route>
       </Routes>
 
